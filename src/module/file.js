@@ -4,12 +4,14 @@
 'use strict';
 
 const fs = require('fs');
-const events = require('./events.js');
 const util = require('util');
 
-const file = `${__dirname}/src/data/test.text`;
+const events = require('./events.js');
+require('./logger.js');
 
-const readFile = util.promisify(fs.readFile);
+const file = `${__dirname}/src/data/test.text`;
+console.log('read',typeof fs.readFile);
+const readFile = fs.readFiles;
 
 const fileReader = (file) => {
   readFile(file, 'utf8')
@@ -23,7 +25,7 @@ const fileReader = (file) => {
     });
 };
 
-const writeFile = util.promisify(fs.writeFile);
+const writeFile = fs.writeFile;
 
 const fileEditor = (content) => {
   writeFile(file, content)
