@@ -11,7 +11,7 @@ require('./logger.js');
 
 const file = `${__dirname}/src/data/test.text`;
 console.log('read',typeof fs.readFile);
-const readFile = fs.readFiles;
+const readFile = util.promisify(fs.readFile);
 
 const fileReader = (file) => {
   readFile(file, 'utf8')
@@ -25,7 +25,7 @@ const fileReader = (file) => {
     });
 };
 
-const writeFile = fs.writeFile;
+const writeFile = util.promisify(fs.writeFile);
 
 const fileEditor = (content) => {
   writeFile(file, content)
